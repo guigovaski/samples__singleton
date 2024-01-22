@@ -15,7 +15,7 @@ public sealed class Singleton
             if (_instance is null)
             {
                 /*
-                 * Para evitar problemas de concorrencia ao obter a primeira instancia da classe
+                 * Para evitar problemas de concorrencia ao obter a primeira instancia da classe (em um ambiente multi-threading)
                  */
                 lock (InstanceLock)
                 {
