@@ -1,3 +1,1 @@
-﻿using static Singleton.Singleton;
-
-var singletonInstance = GetInstance();
+﻿var singletonInstance = Singleton.Singleton.Instance;

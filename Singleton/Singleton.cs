@@ -8,18 +8,24 @@ public sealed class Singleton
     private static readonly object InstanceLock = new();
     private static Singleton? _instance;
 
-    public static Singleton GetInstance()
+    public static Singleton Instance
     {
-        if (_instance is null)
+        get
         {
-            /*
-             * Para evitar problemas de concorrencia ao obter a primeira instancia da classe
-             */
-            lock (InstanceLock)
+            if (_instance is null)
             {
-                _instance = new Singleton();
+                /*
+                 * Para evitar problemas de concorrencia ao obter a primeira instancia da classe
+                 */
+                lock (InstanceLock)
+                {
+                    if (_instance is null)
+                    {
+                        _instance = new Singleton();
+                    }
+                }
             }
+            return _instance;
         }
-        return _instance;
     }
 }
